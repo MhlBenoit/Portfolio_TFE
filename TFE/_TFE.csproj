@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2654DB12-9C46-41D2-AEAF-2B1D49839B8F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TFE</RootNamespace>
+    <AssemblyName>TFE</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>fr-BE</TargetCulture>
+    <ProductName>Royaume du Hibou</ProductName>
+    <PublisherName>Royaume du Hibou</PublisherName>
+    <SuiteName>Application</SuiteName>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\WinLogo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>6BCF1983F37718F13BA55D897F46CADB83F7BA43</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>_TFE_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.6\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Article.cs" />
+    <Compile Include="Model\Brand.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Tva.cs" />
+    <Compile Include="Model\City.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Price_Info.cs" />
+    <Compile Include="Model\Purchase.cs" />
+    <Compile Include="Model\Rank.cs" />
+    <Compile Include="Model\Refund.cs" />
+    <Compile Include="Model\Sale.cs" />
+    <Compile Include="Model\Sub_Category.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\_Data.cs" />
+    <Compile Include="Model\_Entity.cs" />
+    <Compile Include="Tools\Converter_Binding_Customer.cs" />
+    <Compile Include="Tools\Converter_Binding_Employee.cs" />
+    <Compile Include="Tools\Converter_Binding_Transaction.cs" />
+    <Compile Include="Tools\Encryption.cs" />
+    <Compile Include="Tools\Error.cs" />
+    <Compile Include="Tools\Converter_Binding_Boolean.cs" />
+    <Compile Include="Tools\MathConverter.cs" />
+    <Compile Include="Tools\Verify.cs" />
+    <Compile Include="ViewModel\PDF\vm_PDF_Accounting.cs" />
+    <Compile Include="ViewModel\PDF\vm_PDF_Bill.cs" />
+    <Compile Include="ViewModel\PDF\vm_PDF_Deposit.cs" />
+    <Compile Include="ViewModel\PDF\vm_PDF_Refund.cs" />
+    <Compile Include="ViewModel\vm_Application_Purchase.cs" />
+    <Compile Include="ViewModel\vm_Application_Sale.cs" />
+    <Compile Include="ViewModel\vm_Application_Direction.cs" />
+    <Compile Include="ViewModel\vm_Application_Customer.cs" />
+    <Compile Include="ViewModel\vm_Application_Article.cs" />
+    <Compile Include="ViewModel\vm_Login_Password.cs" />
+    <Compile Include="ViewModel\vm_Application.cs" />
+    <Compile Include="View\PDF\v_PDF_Accounting.xaml.cs">
+      <DependentUpon>v_PDF_Accounting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PDF\v_PDF_Deposit.xaml.cs">
+      <DependentUpon>v_PDF_Deposit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PDF\v_PDF_Refund.xaml.cs">
+      <DependentUpon>v_PDF_Refund.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PDF\v_PDF_Bill.xaml.cs">
+      <DependentUpon>v_PDF_Bill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Application.xaml.cs">
+      <DependentUpon>v_Application.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Application_Article.xaml.cs">
+      <DependentUpon>v_Application_Article.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Application_Article_Multiple.xaml.cs">
+      <DependentUpon>v_Application_Article_Multiple.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Application_Customer.xaml.cs">
+      <DependentUpon>v_Application_Customer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Application_Direction.xaml.cs">
+      <DependentUpon>v_Application_Direction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Application_Purchase.xaml.cs">
+      <DependentUpon>v_Application_Purchase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Application_Sale.xaml.cs">
+      <DependentUpon>v_Application_Sale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\v_Login_Password.xaml.cs">
+      <DependentUpon>v_Login_Password.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\PDF\v_PDF_Accounting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PDF\v_PDF_Deposit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PDF\v_PDF_Refund.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PDF\v_PDF_Bill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\v_Application.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\v_Application_Article.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\v_Application_Article_Multiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\v_Application_Customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\v_Application_Direction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\v_Application_Purchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\v_Application_Sale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\v_Login_Connexion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\vm_Login_Connexion.cs" />
+    <Compile Include="ViewModel\vm__Locator.cs" />
+    <Compile Include="View\v_Login_Connexion.xaml.cs">
+      <DependentUpon>v_Login_Connexion.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\v_Login_Password.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_Sql\user.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Informations\Rôle.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_BG.png" />
+    <Resource Include="Resources\Login_Dobby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_BG3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\loupe_Blue.png" />
+    <Resource Include="Resources\loupe_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\valid_Blue.png" />
+    <Resource Include="Resources\valid_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\switch_1.png" />
+    <Resource Include="Resources\switch_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_Sql\data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo_PDF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add_Blue.png" />
+    <Resource Include="Resources\add_Yellow.png" />
+    <Resource Include="Resources\remove_Blue.png" />
+    <Resource Include="Resources\remove_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WinLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DB\DB.csproj">
+      <Project>{c441a43a-bab6-4fd3-9501-b068460c9a2f}</Project>
+      <Name>DB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
