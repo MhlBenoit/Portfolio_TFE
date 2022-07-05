@@ -9,7 +9,7 @@ C'est un logiciel de gestion pour un magasin pouvant :
 - Gérer le stock
 - Gérer les différents clients (un système de fidélité est disponible pour ceux-ci)
 
-# Voici quelques informations :
+# Informations
 - Il est possible de voir les diagrammes de classes (UML) depuis le dossier "SQL Classes"
 - Afin d'en voir d'avantage que les deux captures d'écran ci-dessous, voir le dossier "Application Design"
 - Il est également possible via un MockUp de naviguer dans l'application afin d'en voir le fonctionnement depuis le dossier "MockUp Interactif"
