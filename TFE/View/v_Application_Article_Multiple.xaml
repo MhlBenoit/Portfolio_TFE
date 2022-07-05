@@ -1,0 +1,202 @@
+﻿<Window x:Class="TFE.View.v_Application_Article_Multiple"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="Application"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Width="800"
+        Height="450"
+        Background="#100E17"
+        Visibility="Visible"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d">
+
+    <Window.Resources>
+        <Style x:Key="BtnTopBar" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="Foreground" Value="#555D8F" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Margin="0,0,0,0"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Content}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#222" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#222" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BtnTopBarRed" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="Foreground" Value="#555D8F" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Margin="0,0,0,0"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Content}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="DarkRed" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="DarkRed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="Btn_Minimized"
+                Grid.Row="0"
+                Grid.Column="2"
+                BorderThickness="0"
+                Click="Btn_Minimized_Click"
+                Content="0"
+                FontFamily="Webdings"
+                Style="{StaticResource BtnTopBar}" />
+        <Button x:Name="Btn_Maximized"
+                Grid.Row="0"
+                Grid.Column="3"
+                BorderThickness="0"
+                Click="Btn_Maximized_Click"
+                Content="1"
+                FontFamily="Webdings"
+                Style="{StaticResource BtnTopBar}" />
+        <Button x:Name="Btn_Close"
+                Grid.Row="0"
+                Grid.Column="5"
+                BorderThickness="0"
+                Click="Btn_Close_Click"
+                Content="r"
+                FontFamily="Webdings"
+                Style="{StaticResource BtnTopBarRed}" />
+
+        <Image Grid.Row="1"
+               Grid.Column="1"
+               Grid.ColumnSpan="3"
+               Source="../Resources/Excel.png"
+               Stretch="Fill" />
+
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="133" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Width="700"
+                   Margin="40,30,0,0"
+                   HorizontalAlignment="Center"
+                   Content="Afin que le fichier Excel soit valide pour l'importation, veillez à ce que celui-ci ressemble à ce template"
+                   FontSize="15"
+                   Foreground="#EDC664" />
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Width="550"
+                   Margin="40,60,0,0"
+                   HorizontalAlignment="Center"
+                   Content="- Même ordre pour les colonnes."
+                   FontSize="15"
+                   Foreground="#EDC664" />
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Width="550"
+                   Margin="40,90,0,0"
+                   HorizontalAlignment="Center"
+                   Content="- La première ligne n'est pas prise en compte lors du traitement."
+                   FontSize="15"
+                   Foreground="#EDC664" />
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Width="550"
+                   Margin="45,110,0,0"
+                   HorizontalAlignment="Center"
+                   Content="  Celle-ci peut donc être utilisée comme repère"
+                   FontSize="15"
+                   Foreground="#EDC664" />
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Width="550"
+                   Margin="40,140,0,0"
+                   HorizontalAlignment="Center"
+                   Content="- Les lignes suivantes doivent contenir les informations à importer."
+                   FontSize="15"
+                   Foreground="#EDC664" />
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Width="700"
+                   Margin="40,170,0,0"
+                   HorizontalAlignment="Center"
+                   Content="Dans le cas contraire, le programme ne sera pas en mesure de traiter correctement les données"
+                   FontSize="15"
+                   Foreground="#EDC664" />
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Width="700"
+                   Margin="40,190,0,0"
+                   HorizontalAlignment="Center"
+                   Content="afin de les importer dans la base de données"
+                   FontSize="15"
+                   Foreground="#EDC664" />
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>

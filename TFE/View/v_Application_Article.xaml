@@ -1,0 +1,2619 @@
+﻿<UserControl x:Class="TFE.View.v_Application_Article"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="641"
+             d:DesignWidth="1080"
+             DataContext="{Binding Article, Source={StaticResource Locator}}"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="BtnSubMenu" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="white" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Height" Value="30" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Padding="0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Margin="40,0,0,0"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Content}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="Foreground" Value="#EDC664" />
+                            </Trigger>
+
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BtnAction" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="white" />
+            <Setter Property="BorderBrush" Value="#555D8F" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="170" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Padding="0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Margin="0,0,0,0"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Content}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#EDC664" />
+                                <Setter Property="Foreground" Value="#EDC664" />
+                            </Trigger>
+
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="#100E17" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#100E17" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BtnSearch" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#555D8F" />
+            <Setter Property="BorderBrush" Value="#555D8F" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Height" Value="29" />
+            <Setter Property="Width" Value="170" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Padding="0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Margin="0,0,0,0"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Content}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#EDC664" />
+                            </Trigger>
+
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="#100E17" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#100E17" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BtnSwitch" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="25" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Padding="0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Margin="0,0,0,0"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Content}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="#EDC664" />
+                            </Trigger>
+
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="AllowDrop" Value="true" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="Padding" Value="1,5" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Foreground" Value="#EDC664" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="CaretBrush" Value="#EDC664" />
+            <Setter Property="SelectionBrush" Value="#EDC664" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border Name="Border" BorderThickness="1">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TxtSearch" TargetType="{x:Type TextBox}">
+            <Setter Property="SnapsToDevicePixels" Value="False" />
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="AllowDrop" Value="true" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1,6,1,6" />
+            <Setter Property="Margin" Value="0,0,-1,0" />
+            <Setter Property="Foreground" Value="#555D8F" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="#555D8F" />
+            <Setter Property="CaretBrush" Value="#EDC664" />
+            <Setter Property="SelectionBrush" Value="#EDC664" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border Name="Border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#EDC664" />
+                            </Trigger>
+
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#EDC664" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SubTxt" TargetType="{x:Type Separator}">
+            <Setter Property="Background" Value="#474D73" />
+            <Setter Property="Height" Value="1px" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Grid.Row" Value="1" />
+        </Style>
+        <Style x:Key="SubTxt2" TargetType="{x:Type Separator}">
+            <Setter Property="Background" Value="#100E17" />
+            <Setter Property="Height" Value="1px" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Grid.Row" Value="1" />
+        </Style>
+
+        <Style x:Key="{x:Type CheckBox}" TargetType="{x:Type CheckBox}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <BulletDecorator Background="Transparent">
+                            <BulletDecorator.Bullet>
+                                <Border x:Name="Border"
+                                        Width="15"
+                                        Height="16"
+                                        Background="Transparent"
+                                        BorderBrush="#555D8F"
+                                        BorderThickness="1"
+                                        CornerRadius="0">
+                                    <Grid>
+                                        <Path x:Name="CheckMark"
+                                              Width="9"
+                                              Height="9"
+                                              Data="M 0 0 L 10 10 M 0 10 L 10 0"
+                                              SnapsToDevicePixels="True"
+                                              StrokeThickness="10"
+                                              Visibility="Collapsed">
+                                            <Path.Stroke>
+                                                <SolidColorBrush Color="#EDC664" />
+                                            </Path.Stroke>
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                            </BulletDecorator.Bullet>
+                            <ContentPresenter Margin="20,0,0,0"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Pressed" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckMark" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked" />
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="InderminateMark" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </BulletDecorator>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="cb_dark" TargetType="{x:Type ComboBox}">
+            <Setter Property="Foreground" Value="#EDC664" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Grid.Column="2"
+                                          Focusable="false"
+                                          IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="25" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="Border"
+                                                    Grid.ColumnSpan="2"
+                                                    Background="Transparent" />
+                                            <Path x:Name="Arrow"
+                                                  Grid.Column="1"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+                                                  Fill="#474D73" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="#100E17" />
+                                            </Trigger>
+                                            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="#100E17" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                              Margin="5,7,0,0"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              IsHitTestVisible="False" />
+                            <TextBox x:Name="PART_EditableTextBox"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}"
+                                     Visibility="Hidden" />
+                            <Popup Name="Popup"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   Placement="Bottom"
+                                   PopupAnimation="Fade">
+                                <Grid Name="DropDown"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                      SnapsToDevicePixels="True">
+                                    <Border x:Name="DropDownBorder"
+                                            Background="#1a1a1a"
+                                            BorderThickness="0" />
+                                    <ScrollViewer Background="#1a1a1a" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers />
+        </Style>
+        <Style x:Key="cb_light" TargetType="{x:Type ComboBox}">
+            <Setter Property="Foreground" Value="#EDC664" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Grid.Column="2"
+                                          Focusable="false"
+                                          IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="25" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="Border"
+                                                    Grid.ColumnSpan="2"
+                                                    Background="Transparent" />
+                                            <Path x:Name="Arrow"
+                                                  Grid.Column="1"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+                                                  Fill="#474D73" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="#555D8F" />
+                                            </Trigger>
+                                            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="#555D8F" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                              Margin="5,7,0,0"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              IsHitTestVisible="False" />
+                            <TextBox x:Name="PART_EditableTextBox"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}"
+                                     Visibility="Hidden" />
+                            <Popup Name="Popup"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   Placement="Bottom"
+                                   PopupAnimation="Fade">
+                                <Grid Name="DropDown"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                      SnapsToDevicePixels="True">
+                                    <Border x:Name="DropDownBorder"
+                                            Background="#1a1a1a"
+                                            BorderThickness="0" />
+                                    <ScrollViewer Background="#1a1a1a" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers />
+        </Style>
+        <Style TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Background" Value="#100e17" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border Padding="5"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#0b0910" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="CaretBrush" Value="#EDC664" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid SnapsToDevicePixels="true">
+                            <TextBox x:Name="PART_TextBox" />
+                            <Border Background="Transparent" BorderThickness="0" />
+                            <ScrollViewer Name="PART_ContentHost"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type DatePicker}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="#EDC664" />
+            <Setter Property="IsTodayHighlighted" Value="True" />
+            <Setter Property="FirstDayOfWeek" Value="Monday" />
+        </Style>
+
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Grid">
+                            <Rectangle Width="Auto"
+                                       Height="Auto"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Stretch"
+                                       Fill="Transparent" />
+                            <Border x:Name="Rectangle1"
+                                    Width="Auto"
+                                    Height="Auto"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="3" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+            <Setter Property="Foreground" Value="#EDC664" />
+            <Setter Property="Width" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot"
+                              Width="5"
+                              Margin="0,-26,0,0"
+                              Background="{x:Null}">
+                            <Track x:Name="PART_Track"
+                                   Grid.Row="0"
+                                   Focusable="False"
+                                   IsDirectionReversed="true">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb"
+                                           Background="{TemplateBinding Foreground}"
+                                           Style="{DynamicResource ScrollThumbs}" />
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp"
+                                                  Command="ScrollBar.PageDownCommand"
+                                                  Focusable="False"
+                                                  Opacity="0" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown"
+                                                  Command="ScrollBar.PageUpCommand"
+                                                  Focusable="False"
+                                                  Opacity="0" />
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Thumb" Property="Background" Value="{DynamicResource ButtonSelectBrush}" />
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter TargetName="Thumb" Property="Background" Value="{DynamicResource DarkBrush}" />
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto" />
+                                <Setter Property="Height" Value="12" />
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent" />
+            <Setter Property="HorizontalGridLinesBrush" Value="#555D8F" />
+            <Setter Property="GridLinesVisibility" Value="Horizontal" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="SelectionMode" Value="Single" />
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="CanUserResizeRows" Value="False" />
+            <Setter Property="CanUserResizeColumns" Value="False" />
+            <Setter Property="CanUserReorderColumns" Value="True" />
+            <Setter Property="IsEnabled" Value="True" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="EnableRowVirtualization" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGrid}">
+                        <Border Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer Name="DG_ScrollViewer" Focusable="false">
+                                <ScrollViewer.Template>
+                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Button Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=CellsPanelHorizontalOffset}"
+                                                    Command="{x:Static DataGrid.SelectAllCommand}"
+                                                    Focusable="false"
+                                                    Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type DataGrid},
+                                                                                                  ResourceId=DataGridSelectAllButtonStyle}}"
+                                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.All}}" />
+                                            <DataGridColumnHeadersPresenter Name="PART_ColumnHeadersPresenter"
+                                                                            Grid.Column="1"
+                                                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.Column}}" />
+
+                                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+                                                                    Grid.Row="1"
+                                                                    Grid.ColumnSpan="2"
+                                                                    CanContentScroll="{TemplateBinding CanContentScroll}" />
+
+                                            <ScrollBar Name="PART_VerticalScrollBar"
+                                                       Grid.Row="1"
+                                                       Grid.Column="2"
+                                                       Background="#100E17"
+                                                       Maximum="{TemplateBinding ScrollableHeight}"
+                                                       Orientation="Vertical"
+                                                       ViewportSize="{TemplateBinding ViewportHeight}"
+                                                       Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                                       Value="{Binding Path=VerticalOffset, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ScrollViewer.Template>
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="#100E17" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Foreground" Value="white" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="HoverOn">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                               Storyboard.TargetName="Hover"
+                                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="HoverOff">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                               Storyboard.TargetName="Hover"
+                                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Rectangle x:Name="BackgroundRectangle"
+                                       Grid.ColumnSpan="4"
+                                       Fill="#100E17"
+                                       Stretch="Fill"
+                                       StrokeThickness="0" />
+                            <Rectangle x:Name="Hover"
+                                       Grid.RowSpan="2"
+                                       Grid.ColumnSpan="4"
+                                       Fill="#161321"
+                                       Opacity="0"
+                                       Stretch="Fill" />
+                            <ContentPresenter Margin="15,5,0,5"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Cursor="{TemplateBinding Cursor}"
+                                              SnapsToDevicePixels="True" />
+                            <Path x:Name="SortArrow"
+                                  Grid.RowSpan="2"
+                                  Grid.Column="2"
+                                  Width="8"
+                                  Margin="0,0,10,0"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center"
+                                  Data="F1 M -5.215,6.099L 5.215,6.099L 0,0L -5.215,6.099 Z "
+                                  Fill="#EDC664"
+                                  Opacity="0"
+                                  RenderTransformOrigin=".5,.5"
+                                  Stretch="Uniform">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="SortIconTransform" ScaleX=".9" ScaleY=".9" />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="SortDirection" Value="Ascending">
+                                <Setter TargetName="SortArrow" Property="Opacity" Value="1" />
+                                <Setter TargetName="SortArrow" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="180" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="BackgroundRectangle" Property="Opacity" Value="1" />
+                            </Trigger>
+                            <Trigger Property="SortDirection" Value="Descending">
+                                <Setter TargetName="SortArrow" Property="Opacity" Value="1" />
+                                <Setter TargetName="BackgroundRectangle" Property="Opacity" Value="1" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource HoverOn}" />
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource HoverOff}" />
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="{x:Null}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+            <Setter Property="ValidationErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <TextBlock Margin="2,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="Red"
+                                   Text="!" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridRow}">
+                        <Border x:Name="DGR_Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0"
+                                SnapsToDevicePixels="True">
+                            <SelectiveScrollingGrid>
+                                <SelectiveScrollingGrid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </SelectiveScrollingGrid.ColumnDefinitions>
+                                <SelectiveScrollingGrid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </SelectiveScrollingGrid.RowDefinitions>
+                                <DataGridCellsPresenter Grid.Column="1"
+                                                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <DataGridDetailsPresenter Grid.Row="1"
+                                                          Grid.Column="1"
+                                                          SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                          Visibility="{TemplateBinding DetailsVisibility}" />
+                                <DataGridRowHeader Grid.RowSpan="2"
+                                                   SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                                   Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                            </SelectiveScrollingGrid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="DGR_Border" Property="Background" Value="#100E17" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="DGR_Border" Property="Background" Value="#555D8F" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Border x:Name="border"
+                                Padding="0,7"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter Name="CellContent" SnapsToDevicePixels="True" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="#EDC664" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CellRightAlign">
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--#region LEFTPANEL-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image x:Name="Lightning_2"
+                   Grid.Row="1"
+                   Width="24"
+                   Height="24"
+                   Margin="20,0,0,0"
+                   HorizontalAlignment="Left"
+                   Source="../Resources/lightning.png"
+                   Visibility="Hidden" />
+
+            <Image x:Name="Lightning_1"
+                   Grid.Row="2"
+                   Width="24"
+                   Height="24"
+                   Margin="20,0,0,0"
+                   HorizontalAlignment="Left"
+                   Source="../Resources/lightning.png"
+                   Visibility="Hidden" />
+
+            <Image x:Name="Lightning_3"
+                   Grid.Row="3"
+                   Width="24"
+                   Height="24"
+                   Margin="20,0,0,0"
+                   HorizontalAlignment="Left"
+                   Source="../Resources/lightning.png"
+                   Visibility="Hidden" />
+
+            <Button x:Name="Btn_Listing"
+                    Grid.Row="1"
+                    Margin="15,0,15,0"
+                    Click="Btn_Listing_Click"
+                    Command="{Binding RefreshBtn}"
+                    Content="Liste des articles"
+                    Style="{StaticResource BtnSubMenu}" />
+
+            <Button x:Name="Btn_Add"
+                    Grid.Row="2"
+                    Height="50"
+                    Margin="15,0,15,0"
+                    Click="Btn_Add_Click"
+                    Command="{Binding RefreshBtn}"
+                    Content="Ajouter un ou&#xa;plusieurs article(s)"
+                    Style="{StaticResource BtnSubMenu}" />
+
+            <Button x:Name="Btn_Brand_Category"
+                    Grid.Row="3"
+                    Height="50"
+                    Margin="15,0,15,0"
+                    Click="Btn_Brand_Category_Click"
+                    Command="{Binding RefreshBtn}"
+                    Content="Marque, catégorie &#xa;et sous-catégorie"
+                    Style="{StaticResource BtnSubMenu}" />
+
+        </Grid>
+        <!--#endregion-->
+
+        <TabControl x:Name="TC"
+                    Grid.Column="1"
+                    Margin="0"
+                    Padding="0"
+                    Background="#191625"
+                    BorderThickness="0">
+
+            <!--#region ADD-->
+            <TabItem Header="ADD">
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="15" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="225" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="225" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="300" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.RowSpan="50"
+                           Grid.ColumnSpan="50"
+                           VerticalAlignment="Bottom"
+                           Source="../Resources/Login_BG3.png"
+                           Stretch="Uniform" />
+
+                    <Separator Grid.Row="12"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="3"
+                               Width="225px"
+                               Height="1px"
+                               Margin="0"
+                               Background="#EDC664" />
+
+                    <TextBlock Grid.Row="2"
+                               Grid.RowSpan="18"
+                               Grid.Column="5"
+                               Width="1px"
+                               Margin="0"
+                               Background="#EDC664" />
+
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Content="Nom"
+                           Foreground="white" />
+                    <Label Grid.Row="5"
+                           Grid.Column="1"
+                           Content="Code EAN"
+                           Foreground="white" />
+                    <Label Grid.Row="9"
+                           Grid.Column="1"
+                           Content="Quantité"
+                           Foreground="white" />
+                    <Label Grid.Row="13"
+                           Grid.Column="1"
+                           Content="Prix d'achat"
+                           Foreground="white" />
+                    <Label Grid.Row="17"
+                           Grid.Column="1"
+                           Content="TVA"
+                           Foreground="white" />
+
+                    <Label Grid.Row="1"
+                           Grid.Column="3"
+                           Content="Marque"
+                           Foreground="white" />
+                    <Label Grid.Row="5"
+                           Grid.Column="3"
+                           Content="Catégorie"
+                           Foreground="white" />
+                    <Label Grid.Row="9"
+                           Grid.Column="3"
+                           Content="Sous-catégorie"
+                           Foreground="white" />
+                    <Label Grid.Row="13"
+                           Grid.Column="3"
+                           Content="Prix de vente"
+                           Foreground="white" />
+                    <Label Grid.Row="17"
+                           Grid.Column="3"
+                           Content="Promotion"
+                           Foreground="white" />
+
+                    <Label Grid.Row="3"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_Name, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="7"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_EAN, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="11"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_Quantity, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="15"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_PurchasePrice, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="15"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_SellingPriceTooBig, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="19"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_TVA, Mode=TwoWay}"
+                           Foreground="#E50914" />
+
+                    <Label Grid.Row="3"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_Brand, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="7"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_Category, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="11"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_SubCategory, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="15"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_SellingPrice, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="19"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Add_Promo, Mode=TwoWay}"
+                           Foreground="#E50914" />
+
+
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Add_Name"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Add_Name_GotFocus"
+                                 LostFocus="txt_Add_Name_LostFocus"
+                                 TabIndex="10"
+                                 Text="{Binding NewArticle.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Add_Name" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="6" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Add_EAN"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Add_EAN_GotFocus"
+                                 LostFocus="txt_Add_EAN_LostFocus"
+                                 TabIndex="11"
+                                 Text="{Binding NewArticle.Ean_code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Add_EAN" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="10" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Add_Quantity"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Add_Quantity_GotFocus"
+                                 LostFocus="txt_Add_Quantity_LostFocus"
+                                 PreviewTextInput="Int_PreviewTextInput"
+                                 TabIndex="12"
+                                 Text="{Binding NewArticle.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Add_Quantity" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="14" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Add_PurchasePrice"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Add_PurchasePrice_GotFocus"
+                                 LostFocus="txt_Add_PurchasePrice_LostFocus"
+                                 PreviewTextInput="Decimal_PreviewTextInput"
+                                 TabIndex="16"
+                                 Text="{Binding Add_PurchasePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Add_PurchasePrice" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="18" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cb_Add_TVA"
+                                  Grid.Row="0"
+                                  DisplayMemberPath="Value"
+                                  GotFocus="cb_Add_TVA_GotFocus"
+                                  ItemStringFormat="0 %"
+                                  ItemsSource="{Binding Cb_TVA}"
+                                  LostFocus="cb_Add_TVA_LostFocus"
+                                  SelectedValue="{Binding NewArticle.Price_info_id.Tva_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Style="{StaticResource cb_dark}"
+                                  TabIndex="18" />
+                        <Separator x:Name="Separator_Add_TVA" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cb_Add_Brand"
+                                  Grid.Row="0"
+                                  DisplayMemberPath="Name"
+                                  GotFocus="cb_Add_Brand_GotFocus"
+                                  ItemsSource="{Binding Cb_Brand}"
+                                  LostFocus="cb_Add_Brand_LostFocus"
+                                  SelectedValue="{Binding NewArticle.Brand_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Style="{StaticResource cb_dark}"
+                                  TabIndex="13" />
+                        <Separator x:Name="Separator_Add_Brand" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="6" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cb_Add_Category"
+                                  Grid.Row="0"
+                                  DisplayMemberPath="Name"
+                                  GotFocus="cb_Add_Category_GotFocus"
+                                  ItemsSource="{Binding Cb_Category}"
+                                  LostFocus="cb_Add_Category_LostFocus"
+                                  SelectedValue="{Binding NewArticle.Category_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Style="{StaticResource cb_dark}"
+                                  TabIndex="14">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding Cb_Category_Changed_Action}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <Separator x:Name="Separator_Add_Category" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="10" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cb_Add_SubCategory"
+                                  Grid.Row="0"
+                                  DisplayMemberPath="Name"
+                                  GotFocus="cb_Add_SubCategory_GotFocus"
+                                  ItemsSource="{Binding Cb_SubCategory}"
+                                  LostFocus="cb_Add_SubCategory_LostFocus"
+                                  SelectedValue="{Binding NewArticle.Sub_category_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Style="{StaticResource cb_dark}"
+                                  TabIndex="15" />
+                        <Separator x:Name="Separator_Add_SubCategory" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="14" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Add_SellingPrice"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Add_SellingPrice_GotFocus"
+                                 LostFocus="txt_Add_SellingPrice_LostFocus"
+                                 PreviewTextInput="Decimal_PreviewTextInput"
+                                 TabIndex="17"
+                                 Text="{Binding Add_SellingPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Add_SellingPrice" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="18" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Add_Promo"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Add_Promo_GotFocus"
+                                 LostFocus="txt_Add_Promo_LostFocus"
+                                 PreviewTextInput="Int_PreviewTextInput"
+                                 TabIndex="19"
+                                 Text="{Binding NewArticle.Price_info_id.Promotion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Add_Promo" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="3"
+                          Grid.RowSpan="16"
+                          Grid.Column="7"
+                          Margin="0"
+                          Background="#40555D8F">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               Content="Ajout multiple avec"
+                               FontSize="20"
+                               Foreground="#EDC664" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               Content="un fichier Excel"
+                               FontSize="20"
+                               Foreground="#EDC664" />
+
+                        <Label Grid.Row="3"
+                               Grid.Column="1"
+                               Content="Nom du fichier"
+                               Foreground="White" />
+
+                        <Grid Grid.Row="4" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="txt_Add_Filename"
+                                     Grid.Row="0"
+                                     IsReadOnly="True"
+                                     Text="{Binding ExcelFileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Separator Style="{StaticResource SubTxt2}" />
+                        </Grid>
+
+                        <Button x:Name="Btn_Add_SearchFile"
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Command="{Binding SearchExcelFileBtn}"
+                                Content="Parcourir"
+                                Style="{StaticResource BtnAction}" />
+
+                        <Label Grid.Row="8"
+                               Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               Content="Le fichier doit suivre un ordre prédéfini"
+                               Foreground="White" />
+                        <Label Grid.Row="9"
+                               Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               Content="dans l'organisation des colonnes"
+                               Foreground="White" />
+
+                        <Button x:Name="Btn_Listing_Search_FileOrder"
+                                Grid.Row="10"
+                                Grid.Column="1"
+                                Width="40"
+                                BorderBrush="Transparent"
+                                Click="Btn_Listing_Search_FileOrder_Click"
+                                Style="{StaticResource BtnSearch}">
+                            <Image x:Name="Search_FileOrder_Img"
+                                   Width="16"
+                                   Height="16"
+                                   Source="../Resources/loupe_Yellow.png" />
+                        </Button>
+
+                        <TextBlock Grid.Row="11"
+                                   Grid.RowSpan="2"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Background="Transparent"
+                                   Foreground="#E50914"
+                                   Text="{Binding Error_Excel, Mode=TwoWay}"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap" />
+
+                        <Label Grid.Row="11"
+                               Grid.RowSpan="2"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="3"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Content="{Binding Import_Content, Mode=TwoWay}"
+                               Foreground="#EDC664" />
+
+                        <Button x:Name="Btn_Add_Import"
+                                Grid.Row="13"
+                                Grid.Column="1"
+                                Command="{Binding ImportExcelFileBtn}"
+                                Content="Importer"
+                                Style="{StaticResource BtnAction}" />
+
+
+                    </Grid>
+
+                    <Label x:Name="Btn_Add_Simple_Label"
+                           Grid.Row="21"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"
+                           Height="30"
+                           Margin="0,-1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding AddArticleSimple_Content, Mode=TwoWay}"
+                           Foreground="#EDC664"
+                           Visibility="Visible" />
+
+                    <Button x:Name="Btn_Add_Simple"
+                            Grid.Row="21"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            Height="{Binding AddArticleSimple_Height, Mode=TwoWay}"
+                            Command="{Binding CreateArticleSimpleBtn}"
+                            Content="Ajouter"
+                            Style="{StaticResource BtnAction}" />
+
+
+                </Grid>
+            </TabItem>
+            <!--#endregion-->
+
+            <!--#region LISTING-->
+            <TabItem Header="LISTING">
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="15" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.RowSpan="50"
+                           Grid.ColumnSpan="50"
+                           VerticalAlignment="Bottom"
+                           Source="../Resources/Login_BG3.png"
+                           Stretch="Uniform" />
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1"
+                          Margin="20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="29" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Listing_Search_EAN"
+                                 GotFocus="txt_Listing_Search_EAN_GotFocus"
+                                 LostFocus="txt_Listing_Search_EAN_LostFocus"
+                                 MouseEnter="Search_EAN_MouseEnter"
+                                 MouseLeave="Search_EAN_MouseLeave"
+                                 Style="{StaticResource TxtSearch}"
+                                 Text="{Binding SearchEAN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button x:Name="Btn_Listing_Search_EAN"
+                                Grid.Column="2"
+                                Width="30"
+                                Command="{Binding FilterEANBtn}"
+                                MouseEnter="Search_EAN_MouseEnter"
+                                MouseLeave="Search_EAN_MouseLeave"
+                                Style="{StaticResource BtnSearch}">
+                            <Image x:Name="Search_EAN_Img"
+                                   Width="16"
+                                   Height="16"
+                                   Source="../Resources/loupe_Blue.png" />
+                        </Button>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="2"
+                          Margin="20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="29" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Listing_Search_Name"
+                                 GotFocus="txt_Listing_Search_Name_GotFocus"
+                                 LostFocus="txt_Listing_Search_Name_LostFocus"
+                                 MouseEnter="Search_Name_MouseEnter"
+                                 MouseLeave="Search_Name_MouseLeave"
+                                 Style="{StaticResource TxtSearch}"
+                                 Text="{Binding SearchName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button x:Name="Btn_Listing_Search_Name"
+                                Grid.Column="2"
+                                Width="30"
+                                Command="{Binding FilterNameBtn}"
+                                MouseEnter="Search_Name_MouseEnter"
+                                MouseLeave="Search_Name_MouseLeave"
+                                Style="{StaticResource BtnSearch}">
+                            <Image x:Name="Search_Name_Img"
+                                   Width="16"
+                                   Height="16"
+                                   Source="../Resources/loupe_Blue.png" />
+                        </Button>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="3"
+                          Margin="20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="29" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Listing_Search_Brand"
+                                 GotFocus="txt_Listing_Search_Brand_GotFocus"
+                                 LostFocus="txt_Listing_Search_Brand_LostFocus"
+                                 MouseEnter="Search_Brand_MouseEnter"
+                                 MouseLeave="Search_Brand_MouseLeave"
+                                 Style="{StaticResource TxtSearch}"
+                                 Text="{Binding SearchBrandBis, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button x:Name="Btn_Listing_Search_Brand"
+                                Grid.Column="2"
+                                Width="30"
+                                Command="{Binding FilterBrandBisBtn}"
+                                MouseEnter="Search_Brand_MouseEnter"
+                                MouseLeave="Search_Brand_MouseLeave"
+                                Style="{StaticResource BtnSearch}">
+                            <Image x:Name="Search_Brand_Img"
+                                   Width="16"
+                                   Height="16"
+                                   Source="../Resources/loupe_Blue.png" />
+                        </Button>
+
+                    </Grid>
+
+                    <DataGrid x:Name="Listing_Article"
+                              Grid.Row="3"
+                              Grid.Column="1"
+                              Grid.ColumnSpan="3"
+                              ItemsSource="{Binding Listing_Article, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValue="{Binding Article_Selected, Mode=TwoWay}"
+                              SelectionChanged="Listing_Article_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="85"
+                                                Binding="{Binding Ean_code}"
+                                                Header="EAN" />
+                            <DataGridTextColumn Width="1.6*"
+                                                Binding="{Binding Name}"
+                                                Header="Nom" />
+                            <DataGridTextColumn Width="1*"
+                                                Binding="{Binding Brand_id.Name}"
+                                                Header="Marque" />
+                            <DataGridTextColumn Width="1*"
+                                                Binding="{Binding Category_id.Name}"
+                                                Header="Catégorie" />
+                            <DataGridTextColumn Width="1.1*"
+                                                Binding="{Binding Sub_category_id.Name}"
+                                                Header="Sous-catégorie" />
+                            <DataGridTextColumn Width="65"
+                                                Binding="{Binding Price_info_id.Selling_price, StringFormat=C, ConverterCulture=FR-fr}"
+                                                ElementStyle="{StaticResource CellRightAlign}"
+                                                Header="Prix" />
+                            <DataGridTextColumn Width="68"
+                                                Binding="{Binding Price_info_id.Promotion, StringFormat=0 %, ConverterCulture=FR-fr}"
+                                                ElementStyle="{StaticResource CellRightAlign}"
+                                                Header="Promo" />
+                            <DataGridTextColumn Width="79"
+                                                Binding="{Binding Quantity}"
+                                                ElementStyle="{StaticResource CellRightAlign}"
+                                                Header="Quantité" />
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Listing_Article_Changed_Action}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+
+                    <Grid Grid.Row="5"
+                          Grid.Column="1"
+                          Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="Btn_Listing_Consult_Detail"
+                                Grid.Column="1"
+                                Click="Btn_Listing_Consult_Detail_Click"
+                                Content="Consulter les informations"
+                                IsEnabled="False"
+                                Opacity="0.5"
+                                Style="{StaticResource BtnAction}" />
+                        <Button x:Name="Btn_Listing_Delete"
+                                Grid.Column="2"
+                                Command="{Binding DeleteArticleBtn}"
+                                CommandParameter="{Binding Article_Selected}"
+                                Content="Supprimer"
+                                IsEnabled="False"
+                                Opacity="0.5"
+                                Style="{StaticResource BtnAction}" />
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <!--#endregion-->
+
+            <!--#region DETAILS-->
+            <TabItem Header="DETAILS">
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="15" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="225" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="225" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="300" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.RowSpan="50"
+                           Grid.ColumnSpan="50"
+                           VerticalAlignment="Bottom"
+                           Source="../Resources/Login_BG3.png"
+                           Stretch="Uniform" />
+
+                    <Separator Grid.Row="12"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="3"
+                               Width="225px"
+                               Height="1px"
+                               Margin="0"
+                               Background="#EDC664" />
+
+                    <TextBlock Grid.Row="2"
+                               Grid.RowSpan="18"
+                               Grid.Column="5"
+                               Width="1px"
+                               Margin="0"
+                               Background="#EDC664" />
+
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Content="Nom"
+                           Foreground="white" />
+                    <Label Grid.Row="5"
+                           Grid.Column="1"
+                           Content="Code EAN"
+                           Foreground="white" />
+                    <Label Grid.Row="9"
+                           Grid.Column="1"
+                           Content="Quantité"
+                           Foreground="white" />
+                    <Label Grid.Row="13"
+                           Grid.Column="1"
+                           Content="Prix d'achat"
+                           Foreground="white" />
+                    <Label Grid.Row="17"
+                           Grid.Column="1"
+                           Content="TVA"
+                           Foreground="white" />
+
+                    <Label Grid.Row="1"
+                           Grid.Column="3"
+                           Content="Marque"
+                           Foreground="white" />
+                    <Label Grid.Row="5"
+                           Grid.Column="3"
+                           Content="Catégorie"
+                           Foreground="white" />
+                    <Label Grid.Row="9"
+                           Grid.Column="3"
+                           Content="Sous-catégorie"
+                           Foreground="white" />
+                    <Label Grid.Row="13"
+                           Grid.Column="3"
+                           Content="Prix de vente"
+                           Foreground="white" />
+                    <Label Grid.Row="17"
+                           Grid.Column="3"
+                           Content="Promotion"
+                           Foreground="white" />
+
+                    <Label Grid.Row="3"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Details_Name, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="3"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Details_Brand, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="7"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Details_Category, Mode=TwoWay}"
+                           Foreground="#E50914" />
+                    <Label Grid.Row="11"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Content="{Binding Error_Details_SubCategory, Mode=TwoWay}"
+                           Foreground="#E50914" />
+
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Details_Name"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Details_Name_GotFocus"
+                                 LostFocus="txt_Details_Name_LostFocus"
+                                 TabIndex="30"
+                                 Text="{Binding Article_Selected.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 TextChanged="UpdateTextChanged" />
+                        <Separator x:Name="Separator_Details_Name" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="6" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Details_EAN"
+                                 Grid.Row="0"
+                                 IsReadOnly="True"
+                                 TabIndex="31"
+                                 Text="{Binding Article_Selected.Ean_code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator Style="{StaticResource SubTxt2}" />
+                    </Grid>
+
+                    <Grid Grid.Row="10" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Details_Quantity"
+                                 Grid.Row="0"
+                                 IsReadOnly="True"
+                                 TabIndex="32"
+                                 Text="{Binding Article_Selected.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator Style="{StaticResource SubTxt2}" />
+                    </Grid>
+
+                    <Grid Grid.Row="14" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Details_PurchasePrice"
+                                 Grid.Row="0"
+                                 IsReadOnly="True"
+                                 Text="{Binding Article_Selected.Price_info_id.Buying_price, StringFormat=C, ConverterCulture=FR-fr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator Style="{StaticResource SubTxt2}" />
+                    </Grid>
+
+                    <Grid Grid.Row="18" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Details_TVA"
+                                 Grid.Row="0"
+                                 IsReadOnly="True"
+                                 Text="{Binding Article_Selected.Price_info_id.Tva_id.Value, StringFormat=0 %, ConverterCulture=FR-fr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator Style="{StaticResource SubTxt2}" />
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cb_Details_Brand"
+                                  Grid.Row="0"
+                                  DisplayMemberPath="Name"
+                                  GotFocus="cb_Details_Brand_GotFocus"
+                                  ItemsSource="{Binding Cb_Brand}"
+                                  LostFocus="cb_Details_Brand_LostFocus"
+                                  SelectedValue="{Binding Article_Selected.Brand_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectionChanged="UpdateSelectionChanged"
+                                  Style="{StaticResource cb_dark}"
+                                  TabIndex="31" />
+                        <Separator x:Name="Separator_Details_Brand" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="6" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cb_Details_Category"
+                                  Grid.Row="0"
+                                  DisplayMemberPath="Name"
+                                  GotFocus="cb_Details_Category_GotFocus"
+                                  ItemsSource="{Binding Cb_Category}"
+                                  LostFocus="cb_Details_Category_LostFocus"
+                                  SelectedValue="{Binding Article_Selected.Category_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectionChanged="UpdateSelectionChanged"
+                                  Style="{StaticResource cb_dark}"
+                                  TabIndex="32">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding Cb_Category_Changed_Action}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <Separator x:Name="Separator_Details_Category" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="10" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cb_Details_SubCategory"
+                                  Grid.Row="0"
+                                  DisplayMemberPath="Name"
+                                  GotFocus="cb_Details_SubCategory_GotFocus"
+                                  ItemsSource="{Binding Cb_SubCategory}"
+                                  LostFocus="cb_Details_SubCategory_LostFocus"
+                                  SelectedValue="{Binding Article_Selected.Sub_category_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectionChanged="UpdateSelectionChanged"
+                                  Style="{StaticResource cb_dark}"
+                                  TabIndex="33" />
+                        <Separator x:Name="Separator_Details_SubCategory" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="14" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Details_SellingPrice"
+                                 Grid.Row="0"
+                                 IsReadOnly="True"
+                                 Text="{Binding Article_Selected.Price_info_id.Selling_price, StringFormat=C, ConverterCulture=FR-fr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator Style="{StaticResource SubTxt2}" />
+                    </Grid>
+
+                    <Grid Grid.Row="18" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Details_Promo"
+                                 Grid.Row="0"
+                                 IsReadOnly="True"
+                                 Text="{Binding Article_Selected.Price_info_id.Promotion, StringFormat=0 %, ConverterCulture=FR-fr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator Style="{StaticResource SubTxt2}" />
+                    </Grid>
+
+                    <Label x:Name="Btn_Details_Modify_Label"
+                           Grid.Row="21"
+                           Grid.Column="1"
+                           Height="30"
+                           Margin="0,-1"
+                           HorizontalAlignment="Center"
+                           Content="{Binding UpdateArticle_Content, Mode=TwoWay}"
+                           Foreground="#EDC664"
+                           Visibility="Visible" />
+                    <Button x:Name="Btn_Details_Modify"
+                            Grid.Row="21"
+                            Grid.Column="1"
+                            Height="{Binding UpdateArticle_Height, Mode=TwoWay}"
+                            Command="{Binding UpdateArticleBtn}"
+                            Content="Modifier"
+                            Style="{StaticResource BtnAction}" />
+
+                    <Button x:Name="Btn_Details_Cancel"
+                            Grid.Row="21"
+                            Grid.Column="3"
+                            Click="Btn_Details_Cancel_Click"
+                            Content="Revenir à la liste"
+                            Style="{StaticResource BtnAction}" />
+
+
+                    <Grid Grid.Row="1"
+                          Grid.RowSpan="8"
+                          Grid.Column="7"
+                          Margin="0"
+                          Background="#40555D8F"
+                          IsEnabled="{Binding Details_Purchase_Price_IsEnabled}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="39" />
+                            <RowDefinition Height="14" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               HorizontalAlignment="Center"
+                               Content="Stock"
+                               FontSize="20"
+                               Foreground="#EDC664" />
+
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Content="Quantité"
+                               Foreground="White" />
+
+                        <Label Grid.Row="4"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               HorizontalAlignment="Center"
+                               Content="{Binding Error_Details_Stock, Mode=TwoWay}"
+                               Foreground="#EDC664" />
+                        <Label Grid.Row="4"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               HorizontalAlignment="Center"
+                               Content="{Binding Error_Details_Stock_2, Mode=TwoWay}"
+                               Foreground="#E50914" />
+
+                        <Grid Grid.Row="3"
+                              Grid.Column="1"
+                              Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="txt_Details_New_Quantity"
+                                     Grid.Row="0"
+                                     GotFocus="txt_Details_New_Quantity_GotFocus"
+                                     LostFocus="txt_Details_New_Quantity_LostFocus"
+                                     MaxLength="9"
+                                     PreviewTextInput="Int_PreviewTextInput"
+                                     TabIndex="34"
+                                     Text="{Binding Details_Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Separator x:Name="Separator_New_Quantity" Style="{StaticResource SubTxt}" />
+                        </Grid>
+
+                        <Button x:Name="Btn_Details_Add_Quantity"
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Width="100"
+                                Command="{Binding AddQuantityBtn}"
+                                Content="Ajouter"
+                                Style="{StaticResource BtnAction}" />
+
+                        <Button x:Name="Btn_Details_Remove_Quantity"
+                                Grid.Row="5"
+                                Grid.Column="2"
+                                Width="100"
+                                Command="{Binding RemoveQuantityBtn}"
+                                Content="Retirer"
+                                Style="{StaticResource BtnAction}" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="10"
+                          Grid.RowSpan="10"
+                          Grid.Column="7"
+                          Background="#40555D8F">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="3"
+                               HorizontalAlignment="Center"
+                               Content="Prix"
+                               FontSize="20"
+                               Foreground="#EDC664" />
+
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Content="Prix d'achat"
+                               Foreground="White" />
+                        <Label Grid.Row="6"
+                               Grid.Column="1"
+                               Content="TVA"
+                               Foreground="White" />
+                        <Label Grid.Row="2"
+                               Grid.Column="3"
+                               Content="Prix de vente"
+                               Foreground="White" />
+                        <Label Grid.Row="6"
+                               Grid.Column="3"
+                               Content="Promotion"
+                               Foreground="White" />
+
+                        <TextBlock Grid.Row="8"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="#E50914"
+                                   Text="{Binding Error_Details_Price, Mode=TwoWay}"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap" />
+
+                        <Grid Grid.Row="3" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="txt_Details_New_PurchasePrice"
+                                     Grid.Row="0"
+                                     GotFocus="txt_Details_New_PurchasePrice_GotFocus"
+                                     IsEnabled="{Binding Details_Purchase_Price_IsEnabled}"
+                                     LostFocus="txt_Details_New_PurchasePrice_LostFocus"
+                                     PreviewTextInput="Decimal_PreviewTextInput"
+                                     TabIndex="35"
+                                     Text="{Binding Details_Purchase_Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TextChanged="UpdatePriceChanged" />
+                            <Separator x:Name="Separator_New_PurchasePrice" Style="{StaticResource SubTxt}" />
+                        </Grid>
+
+                        <Grid Grid.Row="7" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <ComboBox x:Name="cb_Details_New_TVA"
+                                      Grid.Row="0"
+                                      DisplayMemberPath="Value"
+                                      GotFocus="cb_Details_New_TVA_GotFocus"
+                                      ItemStringFormat="0 %"
+                                      ItemsSource="{Binding Cb_TVA}"
+                                      LostFocus="cb_Details_New_TVA_LostFocus"
+                                      SelectedValue="{Binding Details_TVA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectionChanged="UpdateSelectionPriceChanged"
+                                      Style="{StaticResource cb_light}"
+                                      TabIndex="37" />
+                            <Separator x:Name="Separator_New_TVA" Style="{StaticResource SubTxt}" />
+                        </Grid>
+
+                        <Grid Grid.Row="3" Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="txt_Details_New_SellingPrice"
+                                     Grid.Row="0"
+                                     GotFocus="txt_Details_New_SellingPrice_GotFocus"
+                                     LostFocus="txt_Details_New_SellingPrice_LostFocus"
+                                     PreviewTextInput="Decimal_PreviewTextInput"
+                                     TabIndex="36"
+                                     Text="{Binding Details_Selling_Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TextChanged="UpdatePriceChanged" />
+                            <Separator x:Name="Separator_New_SellingPrice" Style="{StaticResource SubTxt}" />
+                        </Grid>
+
+                        <Grid Grid.Row="7" Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="txt_Details_New_Promo"
+                                     Grid.Row="0"
+                                     GotFocus="txt_Details_New_Promo_GotFocus"
+                                     LostFocus="txt_Details_New_Promo_LostFocus"
+                                     PreviewTextInput="Int_PreviewTextInput"
+                                     TabIndex="38"
+                                     Text="{Binding Details_Promo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TextChanged="UpdatePriceChanged" />
+                            <Separator x:Name="Separator_New_Promo" Style="{StaticResource SubTxt}" />
+                        </Grid>
+
+                        <Label x:Name="Btn_Details_ModifyPrice_Label"
+                               Grid.Row="9"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="3"
+                               Height="30"
+                               Margin="0,-1"
+                               HorizontalAlignment="Center"
+                               Content="{Binding UpdatePrice_Content, Mode=TwoWay}"
+                               Foreground="#EDC664"
+                               Visibility="Visible" />
+
+                        <Button x:Name="Btn_Details_ModifyPrice"
+                                Grid.Row="9"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3"
+                                Width="100"
+                                Height="{Binding UpdatePrice_Height, Mode=TwoWay}"
+                                Command="{Binding ModifyPriceBtn}"
+                                Content="Modifier"
+                                Style="{StaticResource BtnAction}" />
+
+                    </Grid>
+
+
+
+                </Grid>
+
+            </TabItem>
+            <!--#endregion-->
+
+            <!--#region BRAND, CAT, SUB-CAT-->
+            <TabItem Header="BRAND, CAT, SUB_CAT">
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="15" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.RowSpan="50"
+                           Grid.ColumnSpan="50"
+                           VerticalAlignment="Bottom"
+                           Source="../Resources/Login_BG3.png"
+                           Stretch="Uniform" />
+
+                    <TextBlock Grid.Row="1"
+                               Grid.RowSpan="8"
+                               Grid.Column="3"
+                               Width="1px"
+                               Margin="0,15,0,0"
+                               Background="#EDC664" />
+
+                    <TextBlock Grid.Row="1"
+                               Grid.RowSpan="8"
+                               Grid.Column="7"
+                               Width="1px"
+                               Margin="0,15,0,0"
+                               Background="#EDC664" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="29" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Bcs_Search_Brand"
+                                 GotFocus="txt_Bcs_Search_Brand_GotFocus"
+                                 LostFocus="txt_Bcs_Search_Brand_LostFocus"
+                                 MouseEnter="Search_Bcs_Brand_MouseEnter"
+                                 MouseLeave="Search_Bcs_Brand_MouseLeave"
+                                 Style="{StaticResource TxtSearch}"
+                                 Text="{Binding SearchBrand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button x:Name="Btn_Bcs_Search_Brand"
+                                Grid.Column="2"
+                                Width="30"
+                                Command="{Binding FilterBrandBtn}"
+                                MouseEnter="Search_Bcs_Brand_MouseEnter"
+                                MouseLeave="Search_Bcs_Brand_MouseLeave"
+                                Style="{StaticResource BtnSearch}">
+                            <Image x:Name="Search_Bcs_Brand_Img"
+                                   Width="16"
+                                   Height="16"
+                                   Source="../Resources/loupe_Blue.png" />
+                        </Button>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="29" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Bcs_Search_Category"
+                                 GotFocus="txt_Bcs_Search_Category_GotFocus"
+                                 LostFocus="txt_Bcs_Search_Category_LostFocus"
+                                 MouseEnter="Search_Bcs_Category_MouseEnter"
+                                 MouseLeave="Search_Bcs_Category_MouseLeave"
+                                 Style="{StaticResource TxtSearch}"
+                                 Text="{Binding SearchCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button x:Name="Btn_Bcs_Search_Category"
+                                Grid.Column="2"
+                                Width="30"
+                                Command="{Binding FilterCategoryBtn}"
+                                MouseEnter="Search_Bcs_Category_MouseEnter"
+                                MouseLeave="Search_Bcs_Category_MouseLeave"
+                                Style="{StaticResource BtnSearch}">
+                            <Image x:Name="Search_Bcs_Category_Img"
+                                   Width="16"
+                                   Height="16"
+                                   Source="../Resources/loupe_Blue.png" />
+                        </Button>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="29" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Bcs_Search_SubCategory"
+                                 GotFocus="txt_Bcs_Search_SubCategory_GotFocus"
+                                 LostFocus="txt_Bcs_Search_SubCategory_LostFocus"
+                                 MouseEnter="Search_Bcs_SubCategory_MouseEnter"
+                                 MouseLeave="Search_Bcs_SubCategory_MouseLeave"
+                                 Style="{StaticResource TxtSearch}"
+                                 Text="{Binding SearchSubCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button x:Name="Btn_Bcs_Search_SubCategory"
+                                Grid.Column="2"
+                                Width="30"
+                                Command="{Binding FilterSubCategoryBtn}"
+                                MouseEnter="Search_Bcs_SubCategory_MouseEnter"
+                                MouseLeave="Search_Bcs_SubCategory_MouseLeave"
+                                Style="{StaticResource BtnSearch}">
+                            <Image x:Name="Search_Bcs_SubCategory_Img"
+                                   Width="16"
+                                   Height="16"
+                                   Source="../Resources/loupe_Blue.png" />
+                        </Button>
+
+                    </Grid>
+
+                    <DataGrid x:Name="Listing_Brand"
+                              Grid.Row="3"
+                              Grid.Column="1"
+                              ItemsSource="{Binding Listing_Brand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValue="{Binding Brand_Selected, Mode=TwoWay}"
+                              SelectionChanged="Listing_Brand_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"
+                                                Binding="{Binding Name}"
+                                                Header="Marque" />
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Selected_BCSC_ChangedAction}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+
+                    <DataGrid x:Name="Listing_Category"
+                              Grid.Row="3"
+                              Grid.Column="5"
+                              ItemsSource="{Binding Listing_Category, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValue="{Binding Category_Selected, Mode=TwoWay}"
+                              SelectionChanged="Listing_Category_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"
+                                                Binding="{Binding Name}"
+                                                Header="Catégorie" />
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Listing_Category_Changed_Action}" />
+                                <i:InvokeCommandAction Command="{Binding Selected_BCSC_ChangedAction}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+
+                    <DataGrid x:Name="Listing_SubCategory"
+                              Grid.Row="3"
+                              Grid.Column="9"
+                              ItemsSource="{Binding Listing_SubCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValue="{Binding SubCategory_Selected, Mode=TwoWay}"
+                              SelectionChanged="Listing_SubCategory_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"
+                                                Binding="{Binding Name}"
+                                                Header="Sous-catégorie" />
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Selected_BCSC_ChangedAction}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+
+                    <Grid Grid.Row="5" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Bcsc_Brand"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Bcsc_Brand_GotFocus"
+                                 LostFocus="txt_Bcsc_Brand_LostFocus"
+                                 Text="{Binding Brand_Selected.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Visibility="Collapsed" />
+                        <TextBox x:Name="txt_Bcsc_Brand_New"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Bcsc_Brand_GotFocus"
+                                 LostFocus="txt_Bcsc_Brand_LostFocus"
+                                 Text="{Binding NewBrand.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Bcsc_Brand" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="5" Grid.Column="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Bcsc_Category"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Bcsc_Category_GotFocus"
+                                 LostFocus="txt_Bcsc_Category_LostFocus"
+                                 Text="{Binding Category_Selected.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox x:Name="txt_Bcsc_Category_New"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Bcsc_Category_GotFocus"
+                                 LostFocus="txt_Bcsc_Category_LostFocus"
+                                 Text="{Binding NewCategory.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Bcsc_Category" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <Grid Grid.Row="5" Grid.Column="9">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txt_Bcsc_SubCategory"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Bcsc_SubCategory_GotFocus"
+                                 LostFocus="txt_Bcsc_SubCategory_LostFocus"
+                                 Text="{Binding SubCategory_Selected.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox x:Name="txt_Bcsc_SubCategory_New"
+                                 Grid.Row="0"
+                                 GotFocus="txt_Bcsc_SubCategory_GotFocus"
+                                 LostFocus="txt_Bcsc_SubCategory_LostFocus"
+                                 Text="{Binding NewSubCategory.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Separator x:Name="Separator_Bcsc_SubCategory" Style="{StaticResource SubTxt}" />
+                    </Grid>
+
+                    <TextBlock x:Name="txt_error_brand"
+                               Grid.Row="6"
+                               Grid.RowSpan="2"
+                               Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="#E50914"
+                               Text="{Binding Error_Brand, Mode=TwoWay}"
+                               TextAlignment="Center" />
+                    <TextBlock x:Name="txt_error_category"
+                               Grid.Row="6"
+                               Grid.RowSpan="2"
+                               Grid.Column="5"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="#E50914"
+                               Text="{Binding Error_Category, Mode=TwoWay}"
+                               TextAlignment="Center" />
+                    <TextBlock x:Name="txt_error_subcategory"
+                               Grid.Row="6"
+                               Grid.RowSpan="2"
+                               Grid.Column="9"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="#E50914"
+                               Text="{Binding Error_SubCategory, Mode=TwoWay}"
+                               TextAlignment="Center" />
+
+                    <Label x:Name="txt_valid_brand"
+                           Grid.Row="6"
+                           Grid.RowSpan="2"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           HorizontalContentAlignment="Center"
+                           Content="{Binding Valid_Brand, Mode=TwoWay}"
+                           Foreground="#EDC664" />
+                    <Label x:Name="txt_valid_category"
+                           Grid.Row="6"
+                           Grid.RowSpan="2"
+                           Grid.Column="5"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           HorizontalContentAlignment="Center"
+                           Content="{Binding Valid_Category, Mode=TwoWay}"
+                           Foreground="#EDC664" />
+                    <Label x:Name="txt_valid_subcategory"
+                           Grid.Row="6"
+                           Grid.RowSpan="2"
+                           Grid.Column="9"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           HorizontalContentAlignment="Center"
+                           Content="{Binding Valid_SubCategory, Mode=TwoWay}"
+                           Foreground="#EDC664" />
+
+                    <Grid Grid.Row="8"
+                          Grid.RowSpan="2"
+                          Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="Btn_Bcsc_Add_Brand"
+                                Grid.Column="0"
+                                Width="100"
+                                Command="{Binding AddBrandBtn}"
+                                Content="Ajouter"
+                                Style="{StaticResource BtnAction}" />
+
+                        <Button x:Name="Btn_Switch_Brand"
+                                Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                Click="Btn_Switch_Brand_Click"
+                                Style="{StaticResource BtnSwitch}">
+                            <Image x:Name="Switch_Img_Brand" Source="../Resources/switch_2.png" />
+                        </Button>
+
+                        <Button x:Name="Btn_Bcsc_Modify_Brand"
+                                Grid.Column="2"
+                                Width="100"
+                                Command="{Binding UpdateBrandBtn}"
+                                Content="Modifier"
+                                IsEnabled="False"
+                                Opacity="0.5"
+                                Style="{StaticResource BtnAction}" />
+                    </Grid>
+                    <Button x:Name="Btn_Bcsc_Delete_Brand"
+                            Grid.Row="9"
+                            Grid.Column="1"
+                            Width="100"
+                            Command="{Binding DeleteBrandBtn}"
+                            CommandParameter="{Binding Brand_Selected}"
+                            Content="Supprimer"
+                            IsEnabled="False"
+                            Opacity="0.5"
+                            Style="{StaticResource BtnAction}" />
+
+
+                    <Grid Grid.Row="8"
+                          Grid.RowSpan="2"
+                          Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="Btn_Bcsc_Add_Category"
+                                Grid.Column="0"
+                                Width="100"
+                                Command="{Binding AddCategoryBtn}"
+                                Content="Ajouter"
+                                Style="{StaticResource BtnAction}" />
+
+                        <Button x:Name="Btn_Switch_Category"
+                                Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                Click="Btn_Switch_Category_Click"
+                                Style="{StaticResource BtnSwitch}">
+                            <Image x:Name="Switch_Img_Category" Source="../Resources/switch_2.png" />
+                        </Button>
+
+                        <Button x:Name="Btn_Bcsc_Modify_Category"
+                                Grid.Column="2"
+                                Width="100"
+                                Command="{Binding UpdateCategoryBtn}"
+                                Content="Modifier"
+                                IsEnabled="False"
+                                Opacity="0.5"
+                                Style="{StaticResource BtnAction}" />
+                    </Grid>
+                    <Button x:Name="Btn_Bcsc_Delete_Category"
+                            Grid.Row="9"
+                            Grid.Column="5"
+                            Width="100"
+                            Command="{Binding DeleteCategoryBtn}"
+                            CommandParameter="{Binding Category_Selected}"
+                            Content="Supprimer"
+                            IsEnabled="False"
+                            Opacity="0.5"
+                            Style="{StaticResource BtnAction}" />
+
+                    <Grid Grid.Row="8"
+                          Grid.RowSpan="2"
+                          Grid.Column="9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="Btn_Bcsc_Add_SubCategory"
+                                Grid.Column="0"
+                                Width="100"
+                                Command="{Binding AddSubCategoryBtn}"
+                                Content="Ajouter"
+                                IsEnabled="False"
+                                Opacity="0.5"
+                                Style="{StaticResource BtnAction}" />
+
+                        <Button x:Name="Btn_Switch_SubCategory"
+                                Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                Click="Btn_Switch_SubCategory_Click"
+                                Style="{StaticResource BtnSwitch}">
+                            <Image x:Name="Switch_Img_SubCategory" Source="../Resources/switch_2.png" />
+                        </Button>
+
+                        <Button x:Name="Btn_Bcsc_Modify_SubCategory"
+                                Grid.Column="2"
+                                Width="100"
+                                Command="{Binding UpdateSubCategoryBtn}"
+                                Content="Modifier"
+                                IsEnabled="False"
+                                Opacity="0.5"
+                                Style="{StaticResource BtnAction}" />
+                    </Grid>
+                    <Button x:Name="Btn_Bcsc_Delete_SubCategory"
+                            Grid.Row="9"
+                            Grid.Column="9"
+                            Width="100"
+                            Command="{Binding DeleteSubCategoryBtn}"
+                            CommandParameter="{Binding SubCategory_Selected}"
+                            Content="Supprimer"
+                            IsEnabled="False"
+                            Opacity="0.5"
+                            Style="{StaticResource BtnAction}" />
+
+                </Grid>
+            </TabItem>
+            <!--#endregion-->
+
+        </TabControl>
+
+    </Grid>
+
+</UserControl>
