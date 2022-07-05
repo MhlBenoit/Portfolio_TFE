@@ -1,0 +1,28 @@
+﻿|-------------------------|
+| Droits des utilisateurs |
+|-------------------------|
+
+./	1	Direction
+
+	-	Direction :	Tous
+	-	Client :	Tous
+	-	Article :	Tous
+	-	Caisse :	Tous
+	-	Dépôt :		Tous
+
+./	2	Manager
+
+	-	Direction :	Aucun droits
+	-	Client :	Tous
+	-	Article :	Tous
+	-	Caisse :	Tous
+	-	Dépôt :		Tous
+
+./	3	Vendeur
+
+	-	Direction :	Aucun droits
+	-	client :	Tous
+	-	Article :	Tous
+	-	Caisse :	Tous
+	-	Dépôt :		Aucun droits
+
