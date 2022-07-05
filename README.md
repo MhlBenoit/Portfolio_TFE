@@ -16,6 +16,6 @@ C'est un logiciel de gestion pour un magasin pouvant :
 - Code visible dans les différentes classes du dossier "TFE"
 
 <p>
-<img src="https://github.com/MhlBenoit/Portfolio_TFE/blob/main/Application%20Design/Conne_1.png" width="307"> 
-<img src="https://github.com/MhlBenoit/Portfolio_TFE/blob/main/Application%20Design/Appli_4.png" width="700">
+<img src="https://github.com/MhlBenoit/Portfolio_TFE/blob/main/Application%20Design/Conne_1.png" width="30%"> 
+<img src="https://github.com/MhlBenoit/Portfolio_TFE/blob/main/Application%20Design/Appli_4.png" width="69%">
 </p>
